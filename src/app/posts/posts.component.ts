@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
-import { POSTS } from './posts-mock';
 import { PostsModel } from './posts.model';
+import { PostsService } from './posts.service';
 
 @Component({
   moduleId: module.id,
@@ -12,19 +13,37 @@ import { PostsModel } from './posts.model';
 })
 export class PostsComponent implements OnInit {
   
-  posts: PostsModel[] = POSTS;
+  posts: PostsModel[];
 
-  constructor() { }
+  constructor( 
+      private postsService: PostsService
+  ) { }
   
   ngOnInit() {
     
-      console.log(POSTS)
+      this.postsService.getPosts()
+          .then((posts: PostsModel[]) =>{
+               this.posts = posts;
+          })
 
-    
+      
+
   }
 
-  darLike(id){
-    POSTS[id-1].qtdLikes++;
-  }
+    darLike(id){
+       this.posts[id-1].qtdLikes++;
+    }
+
+    deletar(id){
+        console.log(this.posts[id-1]);
+    }
+    adicionarPost(){
+      //this.postsService.addPost()
+
+    }
 
 }
+
+ 
+
+
