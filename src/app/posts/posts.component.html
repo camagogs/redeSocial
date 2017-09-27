@@ -1,10 +1,11 @@
 <div class="container">
+    <button class="btn btn-success">Novo post</button>
     <div class="card" style="width: 20rem;" *ngFor="let c of posts">
         <div class="card-body">
           <p class="card-text">{{ c.texto }}</p>
           <a href="#" class="card-link">{{ c.nomePessoa }}</a>
-          <p>{{c.qtdLikes}}<i class="material-icons" (click)="darLike(c.id)">thumb_up</i></p>
-          
+          <p style="text-align:right;">{{c.qtdLikes}}<i class="material-icons" (click)="darLike(c.id)">thumb_up</i></p>
+          <button class="btn btn-danger">Deletar</button>
         </div>
       </div>
 </div>
