@@ -5,7 +5,8 @@
           <p class="card-text">{{ c.texto }}</p>
           <a href="#" class="card-link">{{ c.nomePessoa }}</a>
           <p style="text-align:right;">{{c.qtdLikes}}<i class="material-icons" (click)="darLike(c.id)">thumb_up</i></p>
-          <button class="btn btn-danger" (click)="deletar(c.id)">Deletar</button>
+          <button class="btn btn-danger" (click)="deletar(c)">Deletar</button>
+          <button class="btn btn-primary" routerLink="editar/:id">Editar</button>
         </div>
       </div>
 </div>

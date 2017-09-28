@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { PostsModel } from './posts.model';
 import { PostsService } from './posts.service';
@@ -22,24 +24,24 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     
       this.postsService.getPosts()
-          .then((posts: PostsModel[]) =>{
-               this.posts = posts;
-          })
-
-      
-
+          .subscribe((res) =>{
+               this.posts = res;
+               
+        })
   }
 
+    deletar(post){
+        this.postsService.deletePost(post.id)
+            .subscribe((res)=>{
+                var indicePost:number = this.posts.indexOf(post);
+                this.posts.splice(indicePost,1);
+                console.log("Deletou",post);
+        
+        })
+        
+    }
     darLike(id){
        this.posts[id-1].qtdLikes++;
-    }
-
-    deletar(id){
-        console.log(this.posts[id-1]);
-    }
-    adicionarPost(){
-      //this.postsService.addPost()
-
     }
 
 }

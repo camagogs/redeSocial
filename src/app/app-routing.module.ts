@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PostsComponent } from './posts/posts.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { NovoPostComponent } from './novo-post/novo-post.component';
+import { EditarComponent } from './editar/editar.component';
 
 const appRoutes: Routes = [
 
