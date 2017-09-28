@@ -26,7 +26,6 @@ export class PostsComponent implements OnInit {
       this.postsService.getPosts()
           .subscribe((res) =>{
                this.posts = res;
-               
         })
   }
 
@@ -36,16 +35,12 @@ export class PostsComponent implements OnInit {
                 var indicePost:number = this.posts.indexOf(post);
                 this.posts.splice(indicePost,1);
                 console.log("Deletou",post);
+        })    
+    }       
+    darLike(post){
         
-        })
-        
-    }
-    darLike(id){
-       this.posts[id-1].qtdLikes++;
+       this.postsService.Like(post)
     }
 
 }
-
- 
-
 

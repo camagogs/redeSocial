@@ -28,11 +28,23 @@ export class PostsService {
       
   }
 
-  deletePost(id){
-    console.log(id);
-    
+  deletePost(id){    
     return this.http.delete(`http://rest.learncode.academy/api/camargo/redesocial2/${id}`)
      
+  }
+
+  Like(post){
+    post.qtdLikes+=1;
+    let post2 = post;
+    console.log(post2);
+    console.log(`http://rest.learncode.academy/api/camargo/redesocial2/${post2.id}`);
+    return this.http.put(`http://rest.learncode.academy/api/camargo/redesocial2/${post2.id}`, post2)
+      
+
+    //return this.http.put(`http://rest.learncode.academy/api/camargo/redesocial2/${id}`)
+     // .map((res)=>{
+      //    return res.json()
+     // })
   }
   
 }
