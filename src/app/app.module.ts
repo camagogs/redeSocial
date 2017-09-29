@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LayoutRoutingModule } from './layout/layout-routing.module';
 import { NovoPostComponent } from './novo-post/novo-post.component';
 import { PostsService } from './posts/posts.service';
-import { EditarComponent } from './editar/editar.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { EditarComponent } from './editar/editar.component';
     PostsComponent,
     PerfilComponent,
     NovoPostComponent,
-    EditarComponent
+   
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PerfilComponent } from '../perfil/perfil.component';
 import { PostsComponent } from '../posts/posts.component';
 import { NovoPostComponent } from '../novo-post/novo-post.component';
-import { EditarComponent } from '../editar/editar.component';
+
 
 
 const layoutRoutes: Routes = [
@@ -21,9 +21,10 @@ const layoutRoutes: Routes = [
         component: NovoPostComponent
     },
     {
-        path: 'posts/editar/:id',
-        component: EditarComponent
+        path: 'posts/novo-post/:id',
+        component: NovoPostComponent
     }
+
 ];
 @NgModule({
     imports: [

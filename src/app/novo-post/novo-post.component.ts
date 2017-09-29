@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '../posts/posts.service';
 import { Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+
+import { PostsService } from '../posts/posts.service';
 import { PostsModel } from '../posts/posts.model';
 
 @Component({
@@ -12,20 +16,39 @@ import { PostsModel } from '../posts/posts.model';
 export class NovoPostComponent implements OnInit {
   texto: string='';
   post: PostsModel;
+  post2: PostsModel;
   constructor(
-      private postsService: PostsService
-  ) { }
-  ngOnInit() {
-
+      private postsService: PostsService,
+      private route: ActivatedRoute,
+      private location: Location
+  ) {
     
-    this.post= {id: 10, nomePessoa: 'José da Silva', texto: "", qtdLikes: 0}
+   }
+  ngOnInit():void {
 
+    this.post2 ={id: 0,texto :"", nomePessoa:"",qtdLikes:0};
+    
+    
+    this.route.params.forEach((params: Params ) => {
+      let id: number = params['id'];
+      this.postsService.getPost(id)
+        .subscribe((res) =>{
+             this.post2 = res.json()
+      })   
+  })
 }
 
-  adicionarPost(){
-        this.post.texto = this.texto;
-        console.log(this.post);
-        this.postsService.addPost(this.post)
-          .subscribe(post=>{})
-  }
-}
+adicionarPost(){
+       if(this.post2.id != 0){       
+            this.post2.texto = this.texto;
+            this.postsService.atualizar(this.post2)
+                .subscribe(post=>{})
+       } else {
+            this.post2.texto = this.texto;
+            this.postsService.addPost(this.post2)
+               .subscribe(post=>{})
+       }  
+      }
+    } 
+
+

@@ -1,12 +1,12 @@
 <div class="container">
-    <button class="btn btn-success" routerLink="novo-post">Novo post</button>
-    <div class="card" style="width: 20rem;" *ngFor="let c of posts">
+    <button id="bt-p" class="btn btn-success" routerLink="novo-post">Novo post</button>
+    <div class="card"  *ngFor="let c of posts">
         <div class="card-body">
           <p class="card-text">{{ c.texto }}</p>
           <a href="#" class="card-link">{{ c.nomePessoa }}</a>
           <p style="text-align:right;">{{c.qtdLikes}}<i class="material-icons" (click)="darLike(c)">thumb_up</i></p>
-          <button class="btn btn-danger" (click)="deletar(c)">Deletar</button>
-          <button class="btn btn-primary" routerLink="editar/:id">Editar</button>
+          <button class="btn btn-danger" (click)="deletar(c)" >Deletar</button>
+          <button class="btn btn-primary" [routerLink]="['novo-post', c.id]"  >Editar</button>
         </div>
       </div>
 </div>

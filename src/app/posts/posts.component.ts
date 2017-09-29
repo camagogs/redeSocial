@@ -16,6 +16,7 @@ import { PostsService } from './posts.service';
 export class PostsComponent implements OnInit {
   
   posts: PostsModel[];
+  posts2: PostsModel;
 
   constructor( 
       private postsService: PostsService
@@ -34,13 +35,37 @@ export class PostsComponent implements OnInit {
             .subscribe((res)=>{
                 var indicePost:number = this.posts.indexOf(post);
                 this.posts.splice(indicePost,1);
-                console.log("Deletou",post);
         })    
     }       
-    darLike(post){
+    //darLike(post){
         
-       this.postsService.Like(post)
-    }
+      // this.postsService.Like(post)
+        //    .subscribe((res)=> {
+        
+          //  })
+       //this.postsService.deletePost(post.id) 
+         //   .subscribe((res)=>{
+           //     var indicePost:number = this.posts.indexOf(post);
+             //   this.posts.splice(indicePost,1);
+                
+            //})   
+
+
+        //this.postsService.getPosts()
+          //  .subscribe((res) =>{
+            //     this.posts = res;
+          //})        
+   // }
+
+darLike(post){
+    this.posts2 = post;
+    this.posts2.qtdLikes+=1 
+    this.postsService.Like(this.posts2) 
+        .subscribe((res)=>{
+
+        })
+
+}   
 
 }
 

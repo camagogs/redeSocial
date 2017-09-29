@@ -1,9 +1,18 @@
 .container{
-    width: 200px;
+    width: 600px;
     margin: auto;
     margin-top: 50px;
+    margin-bottom: 40px;
+    
 }
 i{
     cursor: pointer;
 
+}
+.card{
+    width: 600px;
+    
+}
+#bt-p{
+    margin-bottom: 40px;
 }

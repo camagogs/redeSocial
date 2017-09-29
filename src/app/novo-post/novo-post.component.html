@@ -2,10 +2,12 @@
 
     <div class="form-group">
       <h4>Novo post</h4>
-      <textarea class="form-control"   
+      <textarea class="form-control"    
           type="text"
           (input) = "texto = $event.target.value"
-          [value] = "texto"
+          
+          value = "{{ post2.texto }}"
+          
       ></textarea>
       <button class="btn btn-success" routerLink="/posts"  (click)="adicionarPost()" >Postar</button>
     </div>

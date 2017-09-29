@@ -34,17 +34,15 @@ export class PostsService {
   }
 
   Like(post){
-    post.qtdLikes+=1;
-    let post2 = post;
-    console.log(post2);
-    console.log(`http://rest.learncode.academy/api/camargo/redesocial2/${post2.id}`);
-    return this.http.put(`http://rest.learncode.academy/api/camargo/redesocial2/${post2.id}`, post2)
-      
-
-    //return this.http.put(`http://rest.learncode.academy/api/camargo/redesocial2/${id}`)
-     // .map((res)=>{
-      //    return res.json()
-     // })
+    return this.http.put(`http://rest.learncode.academy/api/camargo/redesocial2/${post.id}`, post)
   }
-  
+
+  getPost(id){
+    return this.http.get(`http://rest.learncode.academy/api/camargo/redesocial2/${id}`)
+}
+ 
+  atualizar(post){
+    return this.http.put(`http://rest.learncode.academy/api/camargo/redesocial2/${post.id}` , post)
+  }
+
 }
